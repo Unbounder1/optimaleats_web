@@ -1,0 +1,71 @@
+table.greenTable {
+    font-family: Impact, Charcoal, sans-serif;
+    border: 6px solid #FAF9FF;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: center;
+  }
+  table.greenTable td, table.greenTable th {
+    border: 4px solid #000000;
+    padding: 7px 7px;
+  }
+  table.greenTable tbody td {
+    font-size: 12px;
+  }
+  table.greenTable tr:nth-child(even) {
+    background: #C3C8CD;
+  }
+  table.greenTable thead {
+    background: #99A3A6;
+    background: -moz-linear-gradient(top, #b2babc 0%, #a3acaf 66%, #99A3A6 100%);
+    background: -webkit-linear-gradient(top, #b2babc 0%, #a3acaf 66%, #99A3A6 100%);
+    background: linear-gradient(to bottom, #b2babc 0%, #a3acaf 66%, #99A3A6 100%);
+    border-bottom: 0px solid #444444;
+  }
+  table.greenTable thead th {
+    font-size: 18px;
+    font-weight: normal;
+    color: #F0F0F0;
+    text-align: center;
+    border-left: 2px solid #547494;
+  }
+  table.greenTable thead th:first-child {
+    border-left: none;
+  }
+  
+  table.greenTable tfoot td {
+    font-size: 13px;
+  }
+  table.greenTable tfoot .links {
+    text-align: right;
+  }
+  table.greenTable tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: #24943A;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+  .header {
+    height: 80px;
+    padding: 0px;
+    /* background-color: #007eb6; */
+    z-index: 99;
+    position: sticky;
+    top: 0;
+  }
+  
+  h2 {text-align: center;
+    color: white
+    
+}
+
+.strokeme {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+body {
+  background-image: url('https://thumbs.dreamstime.com/b/seamless-monochrome-floral-pattern-tropical-palm-leaves-jungle-vector-213868636.jpg');
+}
