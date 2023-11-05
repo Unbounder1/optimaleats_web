@@ -6,7 +6,7 @@ export async function checkUserCompletion(userId) {
     const db = client.db('userinfo');
 
     // Fetch the user's document using their userId
-    const userDocument = await db.collection('users').findOne({ userId: userId });
+    const userDocument = await db.collection('userid').findOne({ userId: userId });
 
     // Check if the userDocument exists and the complete field is true
     const hasCompleted = userDocument ? userDocument.complete === "true" : false;
