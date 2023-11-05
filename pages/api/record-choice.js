@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     const updateResult = await db.collection('userid').replaceOne(
       { userId },
-      { userId, answers },
+      { userId, answers, complete: true },
       { upsert: true }
     );
 

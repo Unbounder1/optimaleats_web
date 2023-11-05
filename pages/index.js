@@ -1,10 +1,11 @@
 import styles from "/styles/Shared.module.css";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import React from "react";
 import Link from "next/link";
 
+
 const IntroSurvey = () => (
-  <Link href="/test/test" className={styles.cardContent}>
+  <Link href="/survey" className={styles.cardContent}>
     <img alt="Explore Clerk components" src="/icons/layout.svg" />
     <div>
       <h3>Take the Intro Survey</h3>
@@ -17,6 +18,24 @@ const IntroSurvey = () => (
     </div>
   </Link>
 );
+
+const MealGenerated = () => {
+  const { user } = useUser();
+  const userId = user?.id;
+
+  return (
+    <Link href={`/${userId}`} className={styles.cardContent}>
+        <img alt="Generate a suggested meal" src="/icons/layout.svg" />
+        <div>
+          <h3>Generate a suggested meal</h3>
+          <p>Get a meal generated based on your preferences</p>
+        </div>
+        <div className={styles.arrow}>
+          <img alt="Arrow right" src="/icons/arrow-right.svg" />
+        </div>
+    </Link>
+  );
+};
 
 const SignupLink = () => (
   <Link href="/sign-up" className={styles.cardContent}>
@@ -31,18 +50,6 @@ const SignupLink = () => (
   </Link>
 );
 
-const apiSample = `
-import { getAuth } from "@clerk/nextjs/server";
-
-export default function handler(req, res) {
-  const { sessionId, userId } = getAuth(req);
-
-  if (!sessionId) {
-    return res.status(401).json({ id: null });
-  }
-  return res.status(200).json({ id: userId });
-};
-`.trim();
 
 // Main component using <SignedIn> and <SignedOut>.
 //
@@ -65,6 +72,9 @@ const Main = () => (
         <div className={styles.card}>
           <IntroSurvey />
         </div>
+        <div className={styles.card}>
+          <MealGenerated />
+        </div>
       </SignedIn>
       <SignedOut>
         <div className={styles.card}>
@@ -74,65 +84,9 @@ const Main = () => (
 
     </div>
 
-    <SignedIn>
-      <APIRequest />
-    </SignedIn>
 
   </main>
 );
-
-const APIRequest = () => {
-  React.useEffect(() => {
-    if (window.Prism) {
-      window.Prism.highlightAll();
-    }
-  });
-  const [response, setResponse] = React.useState("// Click above to run the request");
-  const makeRequest = async () => {
-    setResponse("// Loading...");
-
-    try {
-      const res = await fetch("/api/getAuthenticatedUserId");
-      const body = await res.json();
-      setResponse(JSON.stringify(body, null, "  "));
-    } catch (e) {
-      setResponse("// There was an error with the request. Please contact support@clerk.dev");
-    }
-  };
-  return (
-    <div className={styles.backend}>
-      <h2>API request example</h2>
-      <div className={styles.card}>
-        <button target="_blank" rel="noopener" className={styles.cardContent} onClick={() => makeRequest()}>
-          <img src="/icons/server.svg" />
-          <div>
-            <h3>fetch('/api/getAuthenticatedUserId')</h3>
-            <p>Retrieve the user ID of the signed in user, or null if there is no user</p>
-          </div>
-          <div className={styles.arrow}>
-            <img src="/icons/download.svg" />
-          </div>
-        </button>
-      </div>
-      <h4>
-        Response
-        <em>
-          <SignedIn>You are signed in, so the request will return your user ID</SignedIn>
-          <SignedOut>You are signed out, so the request will return null</SignedOut>
-        </em>
-      </h4>
-      <pre>
-        <code className="language-js">{response}</code>
-      </pre>
-      <h4>pages/api/getAuthenticatedUserId.js</h4>
-      <pre>
-        <code className="language-js">{apiSample}</code>
-      </pre>
-    </div>
-  );
-};
-
-
 const Home = () => (
   <div className={styles.container}>
     <Main />

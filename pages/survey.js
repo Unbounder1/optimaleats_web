@@ -1,24 +1,24 @@
 // pages/index.js or any other page
 import React, { useState } from 'react';
-import MultipleChoiceCard from '../../components/SurveyModel';
+import MultipleChoiceCard from '../components/SurveyModel';
 import { useUser } from "@clerk/nextjs";
 
 
 const questionData = [
   {
-  id: "question1",
-  question: "What is the capital of France?",
-  choices: ["New York", "London", "Paris", "Berlin"],
+  id: 1,
+  question: "What are your dietary reqestrictions? (Select all the apply)",
+  choices: ["vegetarian", "vegan", "glutenFree", "dairyFree"],
   },
   {
-    id: "question2",
-    question: "Whats the biggest?",
-    choices: ["New York", "London", "Paris", "Berlin"],
+  id: 2,
+  question: "Which cuisines interst you? (Select all that apply)",
+  choices: ["Greek", "Middle Eastern", "Asian", "Italian", "American", "Mediterranean", "Cajun", "English", "British", "Mexican", "Irish", "Chinese", "Southern", "European", "Scottish", "French", "Creole", "All"],
   },
   {
-    id: "question3",
-    question: "Why did we do the hackathon?",
-    choices: ["I don't know", "Im having fun", "_-_"],
+  id: 3,
+  question: "How much time is the max you are willing to spend cooking? (minutes)",
+  choices: [25, 50, 75, 100, 125, 150]
   },
 
 ];
