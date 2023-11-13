@@ -1,4 +1,4 @@
-#Website For OptimalEats AI
+# Website For OptimalEats AI
 
 ## OptimalEats: Personalized Nutritional Planner AI
 OptimalEats is an advanced machine-learning platform designed to revolutionize meal planning. By integrating personal food preferences, dietary restrictions, and nutritional goals, OptimalEats tailors healthy and delicious meal plans uniquely suited to each individual's taste and health objectives.
